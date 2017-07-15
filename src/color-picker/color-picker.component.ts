@@ -1,23 +1,34 @@
 import {
-	AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener, Input, NgZone,
+	AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, forwardRef, HostListener, Input,
+	NgZone,
 	OnInit,
 	ViewChild
 } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/debounceTime';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 @Component({
 	selector: 'jaspero-color-picker',
 	templateUrl: './color-picker.html',
 	styleUrls: ['./color-picker.css'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
+	providers: [{
+		provide: NG_VALUE_ACCESSOR,
+		useExisting: forwardRef(() => ColorPickerComponent),
+		multi: true,
+	}],
 })
-export class ColorPickerComponent implements AfterViewInit {
+export class ColorPickerComponent implements AfterViewInit, ControlValueAccessor {
 	constructor(
 		private _ngZone: NgZone,
 	    private _cdr: ChangeDetectorRef
 	) {}
+
+	// Value accessors
+	onChange;
+	onTouched;
 
 	@HostListener('mousemove', ['$event']) onMouseMove(event: MouseEvent) {
 		if (this.barClicked) {
@@ -42,12 +53,9 @@ export class ColorPickerComponent implements AfterViewInit {
 	@Input() set extraColors(colors: string[]) {
 		const final = [];
 		colors.forEach(color => {
-			if (color[0] === '#') {
-				color = color.slice(1);
-			}
-
-			if (this.hexPattern.test(color)) {
-				final.push(color.toUpperCase());
+			const col = this._validHex(color);
+			if (col) {
+				final.push(col)
 			}
 		});
 
@@ -206,6 +214,22 @@ export class ColorPickerComponent implements AfterViewInit {
 		})
 	}
 
+	// TODO: Add logic for formating color types
+	writeValue(value: any ) {
+		const val = this._validHex(value);
+		if (val) {
+			this.hexChange(val);
+		}
+	}
+
+	registerOnChange(fn: any ) {
+		this.onChange = fn;
+	}
+
+	registerOnTouched(fn: any ) {
+		this.onTouched = fn;
+	}
+
 	// Helpers
 	private _isWindow(obj) {
 		return obj !== null && obj === obj.window;
@@ -237,6 +261,22 @@ export class ColorPickerComponent implements AfterViewInit {
 	}
 
 	// Color Helpers
+	private _validHex(color: any) {
+		if (typeof color !== 'string') {
+			return;
+		}
+
+		if (color[0] === '#') {
+			color = color.slice(1);
+		}
+
+		if (this.hexPattern.test(color)) {
+			return color.toUpperCase();
+		}
+
+		return;
+	}
+
 	private _segmentNumber(number, min, max) {
 		return Math.max(min, Math.min(number, max));
 	}
