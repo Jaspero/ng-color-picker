@@ -20,7 +20,7 @@
     "import-spacing": true,
     "indent": [
       true,
-      "spaces"
+      "tabs"
     ],
     "interface-over-type-literal": true,
     "label-position": true,
@@ -116,7 +116,7 @@
     "component-selector": [
       true,
       "element",
-      "app",
+      "jaspero",
       "kebab-case"
     ],
     "use-input-property-decorator": true,
