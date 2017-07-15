@@ -2,17 +2,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { ColorPickerComponent } from '../color-picker/color-picker.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {JasperoColorPickerModule} from '../color-picker/color-picker.module';
 
 @NgModule({
 	declarations: [
-		AppComponent,
-		ColorPickerComponent,
+		AppComponent
 	],
 	imports: [
 		BrowserModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+		JasperoColorPickerModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]
