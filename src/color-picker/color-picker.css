@@ -3,8 +3,18 @@
 }
 
 .picker_select {
-    width: 50px;
 }
+
+/*.picker_select__color {*/
+    /*width: 50px;*/
+    /*height: 70px;*/
+    /*cursor: pointer;*/
+/*}*/
+
+/*.picker_drop-down {*/
+    /*opacity: 0;*/
+    /*pointer-events: none;*/
+/*}*/
 
 .picker_drop-down__bar {
     background: -webkit-linear-gradient(top, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);

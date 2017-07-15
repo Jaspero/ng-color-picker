@@ -139,6 +139,7 @@ export class ColorPickerComponent implements AfterViewInit, ControlValueAccessor
 		this.barPickerTopPosition = this._segmentNumber(((event.pageY - barPosition) / this.barHeight) * 100, 0, this.barHeight / 2);
 		this.color[0] = this._segmentNumber(Math.floor((((event.pageY - barPosition) / this.barHeight) * 360)), 0, 360);
 		this.inputEl.nativeElement.value = this.hexColor;
+		this.onChange('#' + this.inputEl.nativeElement.value);
 	}
 
 	setSatPickerValue(event: MouseEvent) {
@@ -174,9 +175,10 @@ export class ColorPickerComponent implements AfterViewInit, ControlValueAccessor
 
 		this.color[2] = Math.floor(lightness * 100);
 		this.inputEl.nativeElement.value = this.hexColor;
+		this.onChange('#' + this.inputEl.nativeElement.value);
 	}
 
-	hexChange(color: string) {
+	hexChange(color: string, change = true) {
 		const result = this.hexPattern.exec(color);
 		if (result) {
 			this.inputEl.nativeElement.value = color;
@@ -194,6 +196,11 @@ export class ColorPickerComponent implements AfterViewInit, ControlValueAccessor
 			this.color[0] = hsl[0];
 			this.color[1] = hsl[1];
 			this.color[2] = hsl[2];
+
+			if (change) {
+				this.onChange('#' + this.inputEl.nativeElement.value);
+			}
+
 			this._cdr.detectChanges();
 		}
 	}
@@ -218,7 +225,7 @@ export class ColorPickerComponent implements AfterViewInit, ControlValueAccessor
 	writeValue(value: any ) {
 		const val = this._validHex(value);
 		if (val) {
-			this.hexChange(val);
+			this.hexChange(val, false);
 		}
 	}
 
