@@ -9,14 +9,17 @@
       "check-space"
     ],
     "curly": true,
-    "eofline": false,
+    "eofline": true,
     "forin": true,
     "indent": [
       true,
-      "tabs"
+      "spaces"
     ],
     "label-position": true,
-    "max-line-length": false,
+    "max-line-length": [
+      true,
+      140
+    ],
     "member-access": false,
     "member-ordering": [
       true,
@@ -24,7 +27,7 @@
       "variables-before-functions"
     ],
     "no-arg": true,
-    "no-bitwise": false,
+    "no-bitwise": true,
     "no-console": [
       true,
       "debug",
