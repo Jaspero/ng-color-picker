@@ -22,7 +22,7 @@
     "strictMetadataEmit": true,
     "skipTemplateCodegen": true,
     "flatModuleOutFile": "ng-color-picker.js",
-    "flatModuleId": "@scope/ng-color-picker"
+    "flatModuleId": "@jaspero/ng-color-picker"
   },
   "files": [
     "./index.ts"

@@ -1,26 +1,27 @@
 {
-  "name": "test-lib",
-  "version": "0.1.0",
+  "name": "@jaspero/ng-color-picker",
+  "version": "0.1.6",
   "repository": {
     "type": "git",
-    "url": "https://github.com/username/repo"
+    "url": "https://github.com/Jaspero/ng-color-picker.git"
   },
   "author": {
-    "name": "Filip Lauc",
-    "email": "filip.lauc93@gmail.com"
+    "name": "Jaspero co.",
+    "email": "info@jaspero.co"
   },
   "keywords": [
     "angular"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/username/repo/issues"
+    "url": "https://github.com/Jaspero/ng-color-picker/issues"
   },
-  "module": "test-lib.js",
-  "typings": "test-lib.d.ts",
+  "module": "ng-color-picker.js",
+  "typings": "ng-color-picker.d.ts",
   "peerDependencies": {
-    "@angular/core": "^4.0.0",
-    "rxjs": "^5.1.0",
-    "zone.js": "^0.8.4"
+    "@angular/core": "4.3.0",
+    "@angular/forms": "4.3.0",
+    "rxjs": "5.1.0",
+    "zone.js": "0.8.4"
   }
 }

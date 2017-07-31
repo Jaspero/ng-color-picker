@@ -13,6 +13,7 @@ src/*.d.ts
 .settings
 .idea/*
 *.iml
+yarn.lock
 
 # VS Code
 .vscode/*
