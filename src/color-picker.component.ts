@@ -40,6 +40,8 @@ export class ColorPickerComponent implements AfterViewInit, ControlValueAccessor
     satPickerTopPosition: string;
     satPickerLeftPosition: string;
 
+    dropDownOpen = false;
+
     constructor(
         private _ngZone: NgZone,
         private _cdr: ChangeDetectorRef
@@ -116,6 +118,10 @@ export class ColorPickerComponent implements AfterViewInit, ControlValueAccessor
     ngAfterViewInit() {
         this.inputEl.nativeElement.value = this.hexColor;
         this._registerInputListener();
+    }
+
+    toggle() {
+        this.dropDownOpen = !this.dropDownOpen;
     }
 
     barClick(event: MouseEvent) {

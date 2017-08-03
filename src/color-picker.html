@@ -1,10 +1,10 @@
-<div class="picker_select">
+<div class="picker_select" (click)="toggle()">
     <div class="picker_drop-down__input">
         <div class="picker_drop-down__input_preview" [style.background]="hslFullColor"></div>
         <input type="text" #input />
     </div>
 </div>
-<div class="picker_drop-down">
+<div class="picker_drop-down" [class.active]="dropDownOpen">
     <div class="picker_drop-down__bar" #bar (mousedown)="barClick($event)">
         <div class="picker_drop-down__bar_picker" [class.active]="barClicked" [ngStyle]="barPickerStyle"></div>
     </div>
