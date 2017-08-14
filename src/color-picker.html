@@ -1,19 +1,19 @@
-<div class="picker_select" (click)="toggle()">
-    <div class="picker_drop-down__input">
-        <div class="picker_drop-down__input_preview" [style.background]="hslFullColor"></div>
-        <input type="text" #input />
-    </div>
+<div class="jaspero__colorpicker-wrapper" (click)="toggle()">
+    <div class="jaspero__colorpicker-preview" [style.background]="hslFullColor"></div>
+    <input class="jaspero__colorpicker-input" type="text" #input />
 </div>
-<div class="picker_drop-down" [class.active]="dropDownOpen">
-    <div class="picker_drop-down__bar" #bar (mousedown)="barClick($event)">
-        <div class="picker_drop-down__bar_picker" [class.active]="barClicked" [ngStyle]="barPickerStyle"></div>
+<div class="jaspero__colorpicker-dropdown" [class.active]="dropDownOpen">
+
+    <div class="jaspero__colorpicker-dropdown__sat" #sat [style.background]="hslBackgroundColor" (mousedown)="satClick($event)">
+        <div class="jaspero__colorpicker-dropdown__sat_white"></div>
+        <div class="jaspero__colorpicker-dropdown__sat_black"></div>
+        <div class="jaspero__colorpicker-dropdown__sat_sat_picker" [class.active]="satCliked" [ngStyle]="satPickerStyle"></div>
     </div>
-    <div class="picker_drop-down__sat" #sat [style.background]="hslBackgroundColor" (mousedown)="satClick($event)">
-        <div class="picker_drop-down__sat_white"></div>
-        <div class="picker_drop-down__sat_black"></div>
-        <div class="picker_drop-down__sat_sat_picker" [class.active]="satCliked" [ngStyle]="satPickerStyle"></div>
+    <div class="jaspero__colorpicker-dropdown__bar" #bar (mousedown)="barClick($event)">
+        <div class="jaspero__colorpicker-dropdown__bar_picker" [class.active]="barClicked" [ngStyle]="barPickerStyle"></div>
     </div>
-    <div class="picker_drop-down__extra_colors" *ngIf="extraColorsInner.length">
-        <div class="picker_drop-down__extra_colors_color" *ngFor="let color of extraColorsInner" [style.background]="'#' + color" (click)="hexChange(color)"></div>
+    <div class="jaspero__colorpicker-dropdown__extra" *ngIf="extraColorsInner.length">
+        <h5>Extra colors</h5>
+        <div class="jaspero__colorpicker-dropdown__extra-color" *ngFor="let color of extraColorsInner" [style.background]="'#' + color" (click)="hexChange(color)"></div>
     </div>
 </div>

@@ -34,7 +34,7 @@ export class ColorPickerComponent implements AfterViewInit, ControlValueAccessor
     barClicked = false;
     barPickerTopPosition = 0;
 
-    satWidth = 200;
+    satWidth = 270;
     satHeight = 200;
     satCliked = false;
     satPickerTopPosition: string;
